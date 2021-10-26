@@ -35,5 +35,5 @@ body {
   height: 100px;
   position: absolute;
   background-color: darkred;
-  /* transform: translate(-50%, -50%); */
+  transform: translate(-50%, -50%);
 }
