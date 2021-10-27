@@ -12,3 +12,17 @@ document.addEventListener('scroll', () => {
     navbar.classList.remove('navbar--dark');
   }
 });
+
+//Hand scrolling when tapping on the navbar
+const navbarMenu = document.querySelector('.navbar__menu');
+navbarMenu.addEventListener('click', event => {
+  const target = event.target;
+  const link = target.dataset.link;
+  //link가 있을경우에만 동작
+  if (link == null) {
+    return;
+  }
+  var elmnt = document.querySelector(link);
+  elmnt.scrollIntoView({ behavior: 'smooth' });
+  console.log(event.target.dataset.link);
+});
