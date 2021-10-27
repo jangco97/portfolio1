@@ -22,7 +22,21 @@ navbarMenu.addEventListener('click', event => {
   if (link == null) {
     return;
   }
-  var elmnt = document.querySelector(link);
-  elmnt.scrollIntoView({ behavior: 'smooth' });
-  console.log(event.target.dataset.link);
+  scrollIntoSelector(link);
 });
+const home = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener('scroll', () => {
+  home.style.opacity = 1 - window.scrollY / homeHeight;
+});
+//contact me버튼을 눌렀을 때 contact section으로 이동시키기
+const contactbutton = document.querySelector('.home__contact');
+console.log(contactbutton);
+contactbutton.addEventListener('click', event => {
+  scrollIntoSelector('#contact');
+});
+
+function scrollIntoSelector(selector) {
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({ behavior: 'smooth' });
+}
