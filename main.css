@@ -150,6 +150,7 @@ p {
   max-width: 1200px;
   margin: auto;
 }
+/* About */
 .about__cards {
   display: flex;
   justify-content: space-between;
@@ -370,4 +371,27 @@ p {
 }
 .testimonial__speech-bubble a {
   color: var(--color-pink);
+}
+/* Contact */
+#contact {
+  background-color: var(--color-blue);
+}
+.contact__email,
+.contact__rights,
+.contact__title {
+  color: var(--color-white);
+}
+.contact__title {
+  margin: 32px 0;
+}
+.contact__icon {
+  font-size: var(--font-large);
+  margin: 24px 0;
+}
+.contact__icon i {
+  transition: all var(duration) ease-in;
+}
+.contact__icon i:hover {
+  transform: scale(1.1);
+  color: var(--color-yellow);
 }
