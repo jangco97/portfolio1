@@ -159,6 +159,9 @@ p {
   margin: 24px;
   padding: 10px;
 }
+.home__contact:hover {
+  background-color: var(--color-orange);
+}
 /* Section */
 .section {
   padding: 50px;
@@ -278,6 +281,7 @@ p {
   margin: 40px;
 }
 .category__btn {
+  position: relative;
   border: 1px solid var(--color-dark-white);
   border-radius: var(--size-border-radius);
   font-size: var(--font-regular);
@@ -302,9 +306,9 @@ p {
   height: 24px;
   display: inline-block;
   line-height: 24px;
-  position: relative;
+  position: absolute;
   top: -20px;
-  left: 4px;
+  right: 16px;
   opacity: 0;
   transition: all var(--animation-duration) ease-in;
 }
@@ -444,8 +448,23 @@ p {
 } */
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+    --font-large: 30px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+  }
+  .section {
+    padding: 16px;
+    padding-top: 40px;
+  }
   .navbar__toggle-btn {
     display: block;
+    top: 16px;
+    right: 16px;
+    font-size: var(--font-medium);
   }
   #navbar {
     flex-direction: column;
@@ -469,18 +488,43 @@ p {
   }
   .about__cards {
     flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 0px;
   }
   .about__card {
-    margin-bottom: 38px;
+    margin-bottom: 30px;
   }
   .skillset {
     flex-direction: column;
   }
+  .category__btn {
+    margin: 4px 0;
+    width: 100%;
+  }
   .project {
     flex-grow: 1;
+  }
+  .testimonial {
+    flex-direction: column;
+    align-items: center;
   }
   .testimonial__img {
     width: 80px;
     height: 80px;
+  }
+  .testimonial__img:nth-child(even),
+  .testimonial__img:nth-child(odd) {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .testimonial__speech-bubble {
+    order: 1;
+    /* 기본 order은 0인데 아바터보다 더 큰 order를 지정시
+    순위가 밀리게 되어있다. 따라서 speach가 뒤로 밀림*/
+  }
+  .arrow__container {
+    right: 10px;
+    bottom: 10px;
   }
 }
