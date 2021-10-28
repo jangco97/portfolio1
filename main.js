@@ -87,3 +87,25 @@ function scrollIntoSelector(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({ behavior: 'smooth' });
 }
+// 1.모든 섹션들을 가지고 온다.
+// 2.InterSectionObserver를 이용해서 모든 섹션들을 관찰한다.
+// 3.보여지는 섹션에 해당하는 아이템을 활성화한다.
+
+const sectionIds = ['#home', '#about', '#skills', '#work', '#testimonials', '#contact'];
+const sections = sectionIds.map(id => document.querySelector(id));
+const navItems = sectionIds.map(id => document.querySelector(`[data-link="${id}"]`));
+console.log(sections);
+console.log(navItems);
+
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.3,
+};
+const observerCallback = (entries, observer) => {
+  entries.forEach(entry => {
+    console.log(entry.target);
+  });
+};
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach(section => observer.observe(section));
