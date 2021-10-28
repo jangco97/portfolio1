@@ -36,6 +36,48 @@ contactbutton.addEventListener('click', event => {
   scrollIntoSelector('#contact');
 });
 
+//arrow up button
+const arrow = document.querySelector('.arrow__container');
+document.addEventListener('scroll', () => {
+  if (window.scrollY > homeHeight / 2) {
+    arrow.classList.add('visible');
+  } else {
+    arrow.classList.remove('visible');
+  }
+});
+
+//arrow up function
+arrow.addEventListener('click', () => {
+  scrollIntoSelector('#home');
+});
+//projects
+const WorkBtnContainer = document.querySelector('.category');
+const projectcontainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+WorkBtnContainer.addEventListener('click', e => {
+  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  if (filter == null) {
+    return;
+  }
+  //selection 없애기
+  const active = document.querySelector('.category__btn.selected');
+  active.classList.remove('selected');
+  const target = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+  target.classList.add('selected');
+  projectcontainer.classList.add('anim-out');
+  setTimeout(() => {
+    projects.forEach(project => {
+      console.log(project.dataset.type);
+      if (filter === '*' || filter === project.dataset.type) {
+        project.classList.remove('invisible');
+      } else {
+        project.classList.add('invisible');
+      }
+    });
+    projectcontainer.classList.remove('anim-out');
+  }, 300);
+});
+//scroll function
 function scrollIntoSelector(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({ behavior: 'smooth' });

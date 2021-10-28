@@ -117,12 +117,11 @@ p {
   padding: 8px 12px;
   margin: 0 4px;
   cursor: pointer;
+  border: 1px solid transparent;
   border-radius: var(--size-border-radius);
 }
-.navbar__menu__item.active {
-  border: 1px solid var(--color-black);
-}
 .navbar__menu__item:hover {
+  border-color: var(--color-black);
   background-color: var(--color-dark-grey);
 }
 
@@ -150,15 +149,6 @@ p {
 .home__title,
 .home__description {
   color: var(--color-light-grey);
-}
-.home__opacity {
-  opacity: 1;
-}
-.home__opacity1 {
-  opacity: 0.6;
-}
-.home__opacity2 {
-  opacity: 0.3;
 }
 .home__contact {
   font-size: var(--font-regular);
@@ -293,13 +283,13 @@ p {
   font-size: var(--font-regular);
   padding: 8px 48px;
 }
-.category__btn.active,
+.category__btn.selected,
 .category__btn:hover {
   background-color: var(--color-pink);
   color: var(--color-white);
 }
-.category__btn.active,
-.category__count.active,
+.category__btn.selected,
+.category__count.selected,
 .category__btn:hover .category__count {
   opacity: 1;
   top: 0;
@@ -322,6 +312,12 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  opacity: 1;
+  transition: all var(--animation-duration) ease-out;
+}
+.work__projects.anim-out {
+  opacity: 0;
+  transform: scale(0.96) translateY(40px);
 }
 .project {
   position: relative;
@@ -332,6 +328,9 @@ p {
   height: 200px;
   margin: 2px;
   background-color: var(--color-light-white);
+}
+.project.invisible {
+  display: none;
 }
 .project__image {
   max-width: 100%;
@@ -424,7 +423,25 @@ p {
   transform: scale(1.1);
   color: var(--color-yellow);
 }
-
+.arrow__container {
+  border-radius: 50%;
+  bottom: 24px;
+  right: 24px;
+  position: fixed;
+  font-size: 30px;
+  background-color: var(--color-dark-pink);
+  color: var(--color-white);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-in;
+}
+.arrow__container.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* .arrow__container:hover {
+  border: 2px solid var(--color-dark-pink);
+} */
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
   .navbar__toggle-btn {
